@@ -30,4 +30,34 @@ class UserController {
 
         return $errors;
     }
+    public function loginUser($email, $password) {
+    $errors = [];
+
+    if (empty($email)) {
+        $errors['email'] = "L'email est obligatoire.";
+    }
+    if (empty($password)) {
+        $errors['password'] = "Le mot de passe est obligatoire.";
+    }
+    if (!empty($errors)) {
+        return $errors;
+    }
+
+    $user = $this->userModel->login($email, $password);
+    if (!$user) {
+        $errors['login'] = "Email ou mot de passe incorrect.";
+        return $errors;
+    }
+
+    // Session start et stockage infos user
+    session_start();
+    $_SESSION['user_email'] = $email;
+    $_SESSION['is_logged_in'] = true;
+    $_SESSION['user_id'] = $user['id'];
+
+    // Redirection après connexion réussie
+    header('Location: view_transactions.php');
+    exit();
+}
+
 }
