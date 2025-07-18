@@ -66,4 +66,57 @@ class TransactionController {
             'errors' => $errors
         ];
     }
+    public function handleAddTransaction() {
+    session_start();
+    if (!isset($_SESSION['user_id'])) {
+        header('Location: login.php');
+        exit;
+    }
+
+    $user_id = $_SESSION['user_id'];
+    $success = '';
+    $error = '';
+
+    // Get categories
+    $revenuCategories = $this->transactionModel->getCategoriesByType('revenu');
+    $depenseCategories = $this->transactionModel->getCategoriesByType('depense');
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
+        $type_transaction = $_POST['type_transaction'] ?? '';
+        $montant = floatval($_POST['montant'] ?? 0);
+        $category_name = $_POST['categorie'] ?? '';
+        $description = trim($_POST['description'] ?? '');
+        $date = $_POST['date'] ?? '';
+
+        if (empty($type_transaction) || $montant <= 0 || empty($category_name) || empty($date)) {
+            $error = "All required fields must be filled and amount must be valid.";
+        } elseif (!in_array($type_transaction, ['revenu', 'depense'])) {
+            $error = "Invalid transaction type.";
+        } else {
+            if ($type_transaction === 'depense') {
+                $montant = -abs($montant);
+            }
+
+            $category_id = $this->transactionModel->getCategoryId($category_name, $type_transaction);
+
+            if ($category_id) {
+                if ($this->transactionModel->addTransaction($user_id, $category_id, $montant, $description, $date)) {
+                    $success = "Transaction added successfully!";
+                } else {
+                    $error = "Error while adding the transaction.";
+                }
+            } else {
+                $error = "Category '$category_name' does not exist for '$type_transaction'.";
+            }
+        }
+    }
+
+    return [
+        'revenuCategories' => $revenuCategories,
+        'depenseCategories' => $depenseCategories,
+        'success' => $success,
+        'error' => $error
+    ];
+}
+
 }
