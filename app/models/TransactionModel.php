@@ -78,5 +78,23 @@ public function updateTransaction($transaction_id, $user_id, $montant, $descript
         WHERE id = ? AND user_id = ?");
     return $stmt->execute([$montant, $description, $date_transaction, $category_id, $transaction_id, $user_id]);
 }
+public function getCategoriesByType($type) {
+    $stmt = $this->pdo->prepare("SELECT nom FROM categories WHERE type = ?");
+    $stmt->execute([$type]);
+    return $stmt->fetchAll(PDO::FETCH_COLUMN);
+}
+
+public function getCategoryId($category_name, $type) {
+    $stmt = $this->pdo->prepare("SELECT id FROM categories WHERE nom = ? AND type = ?");
+    $stmt->execute([$category_name, $type]);
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $row ? $row['id'] : null;
+}
+
+public function addTransaction($user_id, $category_id, $montant, $description, $date) {
+    $stmt = $this->pdo->prepare("INSERT INTO transactions (user_id, category_id, montant, description, date_transaction)
+                                VALUES (?, ?, ?, ?, ?)");
+    return $stmt->execute([$user_id, $category_id, $montant, $description, $date]);
+}
 
 }
