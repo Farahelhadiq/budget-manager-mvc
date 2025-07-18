@@ -60,4 +60,23 @@ class TransactionModel {
         $stmt = $this->pdo->prepare("DELETE FROM transactions WHERE id = ? AND user_id = ?");
         return $stmt->execute([$transaction_id, $user_id]);
     }
+    public function getTransactionById($transaction_id, $user_id) {
+    $stmt = $this->pdo->prepare("SELECT * FROM transactions WHERE id = ? AND user_id = ?");
+    $stmt->execute([$transaction_id, $user_id]);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
+public function getCategories() {
+    $stmt = $this->pdo->prepare("SELECT * FROM categories");
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+public function updateTransaction($transaction_id, $user_id, $montant, $description, $date_transaction, $category_id) {
+    $stmt = $this->pdo->prepare("UPDATE transactions 
+        SET montant = ?, description = ?, date_transaction = ?, category_id = ? 
+        WHERE id = ? AND user_id = ?");
+    return $stmt->execute([$montant, $description, $date_transaction, $category_id, $transaction_id, $user_id]);
+}
+
 }
