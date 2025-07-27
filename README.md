@@ -60,8 +60,6 @@ Budget-Manager-MVC/
 ---
 
 
----
-
 ## <img src="https://cdn-icons-png.flaticon.com/512/1828/1828970.png" width="22"/> Installation  
 
 1. **Clone the repository**  
@@ -83,7 +81,7 @@ Budget-Manager-MVC/
 
 ---
 
-  <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" width="22"/> Author
+  <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" width="12"/> Author
   
   👩‍💻 Farah El Hadiq – Full Stack Web Developer
 
