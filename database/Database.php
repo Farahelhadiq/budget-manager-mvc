@@ -28,7 +28,6 @@ class Database {
         return self::$instance;
     }
 
-    // باش تستعمل الـ PDO من الخارج
     public function getConnection() {
         return $this->pdo;
     }
