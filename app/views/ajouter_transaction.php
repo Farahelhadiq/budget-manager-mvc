@@ -13,7 +13,7 @@ $error = $data['error'];
 <head>
     <meta charset="UTF-8">
     <title>Ajouter une Transaction</title>
- <link rel="stylesheet" href="ajouter.css?v=2">
+ <link rel="stylesheet" href="../../assets/css/ajouter.css?v=2">
  <script src="https://unpkg.com/feather-icons"></script>
 </head>
 <body>
