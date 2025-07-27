@@ -67,26 +67,28 @@ Budget-Manager-MVC/
 1. **Clone the repository**  
    ```bash
    git clone https://github.com/Farahelhadiq/budget-manager-mvc.git
-Import the database
+2. **Import the database**
+   Import the .sql file into phpMyAdmin or MySQL.
+3. **Configure database**
+   Edit the config/config.php with your database credentials.
+4. **Run the project**
+   Place the project in htdocs (XAMPP) or your PHP server root.
+   Visit http://localhost/budget-manager-mvc.
+   
 
-Import the .sql file into phpMyAdmin or MySQL.
+---
 
-Configure database
+    <img src="https://cdn-icons-png.flaticon.com/512/1828/1828859.png" width="22"/> Contributing
+    Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
+   
 
-Edit the config/config.php with your database credentials.
+---
 
-Run the project
+ 
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" width="22"/> Author
+      👩‍💻 Farah El Hadiq – Full Stack Web Developer
 
-Place the project in htdocs (XAMPP) or your PHP server root.
-
-Visit http://localhost/budget-manager-mvc.
-<img src="https://cdn-icons-png.flaticon.com/512/1828/1828859.png" width="22"/> Contributing
-Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
-
-<img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" width="22"/> Author
-👩‍💻 Farah El Hadiq – Full Stack Web Developer
-
-🔗 Portfolio: https://portfoliofarahelhadiq.netlify.app
-🔗 LinkedIn: https://www.linkedin.com/in/farah-el-hadiq-549a67306/
+     🔗 Portfolio: https://portfoliofarahelhadiq.netlify.app
+     🔗 LinkedIn: https://www.linkedin.com/in/farah-el-hadiq-549a67306/
 
           <h4 align="center"> ⭐ If you like this project, don't forget to star the repository! ⭐ </h4>
