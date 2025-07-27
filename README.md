@@ -73,6 +73,7 @@ Budget-Manager-MVC/
    Edit the config/config.php with your database credentials.
 4. **Run the project**
    Place the project in htdocs (XAMPP) or your PHP server root.
+   
    Visit http://localhost/budget-manager-mvc.
    
 
