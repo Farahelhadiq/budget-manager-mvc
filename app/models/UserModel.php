@@ -1,20 +1,41 @@
 <?php
-class CategoryModel {
-    private $db;
+require_once __DIR__ . '/../database/Database.php';
 
-    public function __construct($pdo) {
-        $this->db = $pdo;
+class UserModel {
+    private $pdo;
+
+    public function __construct() {
+        $this->pdo = Database::getInstance()->getConnection();
     }
 
-    public function getCategoriesByType($type) {
-        $stmt = $this->db->prepare("SELECT id, nom FROM categories WHERE type = :type");
-        $stmt->execute([':type' => $type]);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    public function isEmailExists($email) {
+        $sql = "SELECT COUNT(*) FROM users WHERE email = :email";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute(['email' => $email]);
+        $count = $stmt->fetchColumn();
+        return $count > 0;
     }
 
-    public function getAllCategories() {
-        $stmt = $this->db->query("SELECT * FROM categories");
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    public function register($nom, $email, $password) {
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $sql = "INSERT INTO users (nom, email, password) VALUES (:nom, :email, :password)";
+        $stmt = $this->pdo->prepare($sql);
+        return $stmt->execute([
+            'nom' => $nom,
+            'email' => $email,
+            'password' => $hashedPassword
+        ]);
+    }
+
+    public function login($email, $password) {
+        $sql = "SELECT id, nom, email, password FROM users WHERE email = :email";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute(['email' => $email]);
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($user && password_verify($password, $user['password'])) {
+            return $user; // Return user data (id, nom, email)
+        }
+        return false; // Return false if credentials are invalid
     }
 }
-?>
