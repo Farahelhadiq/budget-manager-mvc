@@ -15,7 +15,7 @@ $max_values = $data['max_values'];
 <head>
     <meta charset="UTF-8">
     <title>Voir les Transactions</title>
-    <link rel="stylesheet" href="assets/css/transaction.css">
+    <link rel="stylesheet" href="../../assets/css/transaction.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
