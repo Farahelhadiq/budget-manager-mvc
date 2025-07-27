@@ -8,7 +8,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
     $email = trim($_POST['mail']);
     $password = trim($_POST['motPasse']);
 
-    // استدعاء الميثود من UserController
     $errors = $controller->loginUser($email, $password);
 }
 ?>
@@ -19,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion</title>
-    <link rel="stylesheet" href="login.css?v=1">
+    <link rel="stylesheet" href="../../assets/css/login.css">
 </head>
 <body>
     <div class="login-container">
