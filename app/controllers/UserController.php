@@ -1,12 +1,15 @@
 <?php
-require_once __DIR__ . '/../../database/Database.php';
 require_once __DIR__ . '/../models/UserModel.php';
+require_once __DIR__ . '/../database/Database.php';
+require_once __DIR__ . '/../models/TransactionModel.php';
 
 class UserController {
     private $userModel;
+    private $transactionModel;
 
     public function __construct() {
-        $this->userModel = new UserModel(Database::getInstance()->getConnection());
+        $this->userModel = new UserModel(); // Initialize UserModel
+        $this->transactionModel = new TransactionModel(Database::getInstance()->getConnection());
     }
 
     public function registerUser($nom, $email, $password, $confirmPassword) {
@@ -23,9 +26,13 @@ class UserController {
         }
 
         if (empty($errors)) {
-            $this->userModel->register($nom, $email, $password);
-            header('Location: login.php');
-            exit();
+            try {
+                $this->userModel->register($nom, $email, $password);
+                header('Location: login.php');
+                exit();
+            } catch (Exception $e) {
+                $errors['general'] = "Erreur lors de l'inscription : " . $e->getMessage();
+            }
         }
 
         return $errors;
@@ -50,11 +57,13 @@ class UserController {
             return $errors;
         }
 
+        // Session start et stockage infos user
         session_start();
         $_SESSION['user_email'] = $email;
         $_SESSION['is_logged_in'] = true;
         $_SESSION['user_id'] = $user['id'];
 
+        // Redirection après connexion réussie
         header('Location: view_transactions.php');
         exit();
     }
