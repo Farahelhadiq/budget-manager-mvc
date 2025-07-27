@@ -78,17 +78,14 @@ Budget-Manager-MVC/
 
 ---
 
-    <img src="https://cdn-icons-png.flaticon.com/512/1828/1828859.png" width="22"/> Contributing
-    Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
-   
+<img src="https://cdn-icons-png.flaticon.com/512/1828/1828859.png" width="22"/> Contributing Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
 
 ---
 
- 
-      <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" width="22"/> Author
-      👩‍💻 Farah El Hadiq – Full Stack Web Developer
+  <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" width="22"/> Author
+  👩‍💻 Farah El Hadiq – Full Stack Web Developer
 
-     🔗 Portfolio: https://portfoliofarahelhadiq.netlify.app
-     🔗 LinkedIn: https://www.linkedin.com/in/farah-el-hadiq-549a67306/
+ 🔗 Portfolio: https://portfoliofarahelhadiq.netlify.app
+ 🔗 LinkedIn: https://www.linkedin.com/in/farah-el-hadiq-549a67306/
 
-          <h4 align="center"> ⭐ If you like this project, don't forget to star the repository! ⭐ </h4>
+      <h4 align="center"> ⭐ If you like this project, don't forget to star the repository! ⭐ </h4>
