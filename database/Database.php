@@ -20,7 +20,6 @@ class Database {
         }
     }
 
-    // Singleton pattern باش تكون instance وحدة ديما
     public static function getInstance() {
         if (self::$instance === null) {
             self::$instance = new Database();
