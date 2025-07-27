@@ -83,9 +83,11 @@ Budget-Manager-MVC/
 ---
 
   <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" width="22"/> Author
+  
   👩‍💻 Farah El Hadiq – Full Stack Web Developer
 
  🔗 Portfolio: https://portfoliofarahelhadiq.netlify.app
+ 
  🔗 LinkedIn: https://www.linkedin.com/in/farah-el-hadiq-549a67306/
 
-      <h4 align="center"> ⭐ If you like this project, don't forget to star the repository! ⭐ </h4>
+     <h4 align="center"> ⭐ If you like this project, don't forget to star the repository! ⭐ </h4>
